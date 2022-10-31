@@ -88,10 +88,10 @@ main {
     }
     a:link, a:visited, a:hover, a:active {
         color: #FFE3D8;
-        font-size: 22pt;
+        font-size: 22pt !important;
     }
     .embiggen {
-        font-size: 30pt;
+        font-size: 30pt !important;
     }
     .embiggen-logo {
         height: 100%;
