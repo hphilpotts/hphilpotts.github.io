@@ -29,6 +29,9 @@ body {
     .embiggen-logo {
         height: 100%;
     }
+    .narrow {
+        margin: 0 3.33%;
+    }
 }
 
 nav {
