@@ -1,0 +1,70 @@
+body {
+    font-family: 'DM Serif Display', serif;
+}
+
+nav {
+    padding: 2em !important;
+}
+
+main {
+    padding: 0 3%;
+}
+
+.narrow {
+    margin: 0 10%;
+}
+
+.avatar {
+    margin: 2em auto;
+    height: 20em;
+    border-radius: 18.5%;
+    border: #FFE3D8 0.5em solid;
+}
+
+.text-image {
+    margin: 2em auto;
+}
+
+/* || Color Palette
+
+    - Deep Blue: #0A043C
+    - Mid Blue: #03506F
+    - Light Grey: #BBBBBB
+    - Beige: #FFE3D8
+*/
+
+.deep-blue-text {
+    color: #0A043C;
+}
+
+.deep-blue-bg {
+    background-color: #0A043C;
+}
+
+.mid-blue-text {
+    color: #03506F;
+}
+
+.mid-blue-bg {
+    background-color: #03506F;
+}
+
+.light-grey-text {
+    color: #BBBBBB;
+}
+
+.light-grey-bg {
+    background-color: #BBBBBB;
+}
+
+.beige-text {
+    color: #FFE3D8
+}
+
+.beige-bg {
+    background-color: #FFE3D8
+}
+
+.light-link a:link, .light-link a:visited, .light-link a:hover, .light-link a:active { color: #FFE3D8; }
+
+.dark-link a:link, .dark-link a:visited, .dark-link a:hover, .dark-link a:active { color: #0A043C; }
