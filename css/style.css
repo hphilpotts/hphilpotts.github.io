@@ -29,8 +29,9 @@ body {
     .embiggen-logo {
         height: 100%;
     }
+    /* remove margin in narrow class as it looks bad on mobile */
     .narrow {
-        margin: 0 3.33%;
+        margin: 0 0%;
     }
 }
 
