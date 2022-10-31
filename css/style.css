@@ -12,6 +12,19 @@ body {
         background-color: pink !important;
         color: #03506F !important;
     }
+    h1 {
+        font-size: 40pt;
+    }
+    h3 {
+        font-size: 32pt;
+    }
+    h5 {
+        font-size: 28pt;
+    }
+    a:link, a:visited, a:hover, a:active {
+        color: #FFE3D8;
+        font-size: 22pt;
+    }
 }
 
 nav {
