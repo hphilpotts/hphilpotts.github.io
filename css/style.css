@@ -7,21 +7,27 @@ body {
 @media all and (max-width: 1000px) {
     body {
         font-family: 'DM Serif Display', serif;
-        font-size: 22pt;
+        font-size: 30pt;
         max-width: 100vw;
     }
     h1 {
-        font-size: 40pt;
+        font-size: 64pt;
     }
     h3 {
-        font-size: 32pt;
+        font-size: 48pt;
     }
     h5 {
-        font-size: 28pt;
+        font-size: 36pt;
     }
     a:link, a:visited, a:hover, a:active {
         color: #FFE3D8;
         font-size: 22pt;
+    }
+    .embiggen {
+        font-size: 30pt;
+    }
+    .embiggen-logo {
+        height: 100%;
     }
 }
 
