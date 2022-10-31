@@ -1,5 +1,15 @@
 body {
     font-family: 'DM Serif Display', serif;
+    font-size: 14pt;
+    max-width: 100vw;
+}
+
+@media all and (max-width: 750px) {
+    body {
+        font-family: 'DM Serif Display', serif;
+        font-size: 20pt;
+        max-width: 100vw;
+    }
 }
 
 nav {
