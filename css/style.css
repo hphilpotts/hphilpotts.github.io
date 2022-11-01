@@ -5,7 +5,7 @@ body {
 }
 
 nav {
-    padding: 2em !important;
+    max-width: 80rem;
 }
 
 main {
@@ -13,16 +13,27 @@ main {
     display: flex;
     justify-content: center;
 }
+
+
+.header-left {
+    margin-left: 3%;
+}
+
+.header-right {
+    margin-right: 3%;
+}
+
 .narrow {
     max-width: 60rem;
 }
 
 .avatar {
     margin: 2em auto;
-    height: 20em;
+    height: auto;
     border-radius: 18.5%;
     border: #FFE3D8 0.5em solid;
     max-width: 80vw;
+    max-height: 20rem;
     box-shadow: #161616 0.3em 0.3em 0.8em;
 }
 
@@ -87,6 +98,13 @@ main {
 .light-link a:link, .light-link a:visited, .light-link a:hover, .light-link a:active { color: #FFE3D8; }
 
 .dark-link a:link, .dark-link a:visited, .dark-link a:hover, .dark-link a:active { color: #0A043C; }
+
+.footer-link {
+    margin: 0 1rem;
+    font-size: 11pt;
+    /* font-style: italic; */
+    text-decoration: none;
+}
 
 @media all and (max-width: 1000px) {
     /* body {
