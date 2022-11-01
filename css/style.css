@@ -10,10 +10,11 @@ nav {
 
 main {
     padding: 0 3%;
+    display: flex;
+    justify-content: center;
 }
-
 .narrow {
-    margin: 0 10%;
+    max-width: 60rem;
 }
 
 .avatar {
@@ -22,6 +23,7 @@ main {
     border-radius: 18.5%;
     border: #FFE3D8 0.5em solid;
     max-width: 80vw;
+    box-shadow: #161616 0.3em 0.3em 0.8em;
 }
 
 .img-container {
@@ -36,6 +38,7 @@ main {
     border: #FFE3D8 0.2em solid;
     height: auto;
     width: 100%;
+    box-shadow: #161616 0.3em 0.3em 0.8em;
 }
 .smaller {
     max-width: 400px;
