@@ -71,7 +71,7 @@ main {
 
 .dark-link a:link, .dark-link a:visited, .dark-link a:hover, .dark-link a:active { color: #0A043C; }
 
-@media all and (max-width: 1000px) {
+/* @media all and (max-width: 1000px) {
     body {
         font-family: 'DM Serif Display', serif;
         font-size: 30pt;
@@ -106,4 +106,4 @@ main {
     .navbar-brand {
         font-size: 36pt !important;
     }
-}
+} */
