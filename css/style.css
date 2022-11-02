@@ -19,8 +19,10 @@ main {
     margin-left: 3%;
 }
 
+/* ? check if this causes problems on larger screens */
 .header-right {
-    margin-right: 3%;
+    margin: 0 auto;
+    margin-right: 30%;
 }
 
 .narrow {
@@ -51,6 +53,7 @@ main {
     width: 100%;
     box-shadow: #161616 0.3em 0.3em 0.8em;
 }
+
 .smaller {
     max-width: 400px;
 }
