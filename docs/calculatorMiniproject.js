@@ -1,163 +1,236 @@
-// * -- Global variables and their uses:   
+// MAIN SCRIPT, RE-WRITTEN
+// TODO - convert to TS
 
-let display = ''; // this is what shows on the screen
-let buttonPress = null; // last button to be pressed, get from element's inner html thru event listener, passed to handleButtonPress
-let lastOperator = null; // remember last operator presseed, used in evaluateInputs
-let currentInput = ''; // number currently being input into calculator (via multiple button presses)
-let previousInput = 0; // previously added input - get from currentInput when operator pressed, used in evaluateInput
-let lastResult = null; // saves the result from evaluateInput, used to allow immediate operator press after '='
+// * -- Global variables:
+let leftNum= null; // the number (as string) on the left hand side of the sum - will also be used to store the number most recently evaluated
+let currentRightNum = null; // the number (as string) on the right hand side of a sum, currently being input by used
+let prevRightNum = null; // the previously input currentRightNum (storing this allows repeated press of `=` to repeat previous operation)
+let currentOperator = null; // the most recently pressed operator
+let prevOperator = null;
 
-const resetInputs = () => buttonPress = null; lastOperator = null; currentInput = null; previousInput = null; // Used upon press of `=` or `C`:
+const logGlobalVariables = () => console.log(`left num: ${leftNum}, current op: ${currentOperator}, current Rnum: ${currentRightNum}, prev op: ${prevOperator}, prev Rnum: ${prevRightNum}`)
+
+// Full reset of all Global variables to null
+const resetAll = () => {
+    leftNum = null; currentRightNum = null; prevRightNum = null; currentOperator = null; prevOperator = null;
+}
 
 
-// * -- Add event listeners w/click handler to all buttons:
+// * -- Event listeners and handle button click:
 
 const buttons = document.querySelectorAll(".button-inner");
 
-// Get button innerHTML and then process accordingly (see -- Processing Button Presses)
+// Get button innerHTML string, pass this as input to Processing Button Presses in section immediately below):
 function handleClick(){
+    logGlobalVariables();
     buttonPress = this.innerHTML;
+    console.log(`[${buttonPress}] pressed ---`);
     processButtonPress(buttonPress);
-    console.log('Current Input:', currentInput);
-    console.log('Previous Input:', previousInput);
-    console.log('Last Result:', lastResult);
 };
 
 buttons.forEach(button => button.addEventListener('click', handleClick));
 
-
 // * -- Processing button presses:
 
-const unaryOperators = ['+/-', '%', '√'];
-const binaryOperators = ['/', 'x', '-', '+'];
-const numerics = new RegExp("[0-9]");
-
+// input is the innerHTML from the button being pressed, passed from handleClick() above:
 const processButtonPress = input => {
+
+    // button innerHTML strings grouped by type (with respective functions to run for each type)
+    const unaryOperators = ['+/-', '%', '√'];
+    const binaryOperators = ['/', 'x', '-', '+'];
+    const numbers = new RegExp("[0-9]") // regex previously included '.' as well, however this caused every other `numbers.test(input)` to fail
+
+    // console.log('Processing button press...');
     switch (true) {
-        case (numerics.test(input) || input === '.'):
-            numberPress(input); break // decimal press can be used in the same way as a numeric press!
+        case (numbers.test(input) || input === '.'): // decimal can be handled the same way as a number (press): i.e. as string
+            // console.log(input, 'matched numbers regex, performing numberPress...');
+            numberPress(input); break
         case (unaryOperators.includes(input)):
             unaryOperatorPress(input); break
         case (binaryOperators.includes(input)):
             binaryOperatorPress(input); break
         case (input === '='):
-            equalsPress(); break
+            equalsPress(); break // ? can equalsPress be integrated into binaryOperatorPress?
         case (input === 'C'):
             cancel(); break
         default:
-            console.log(`Error - I'm not sure how we got here...`);
+            console.log(`Error - button pressed not caught, input was`, input); // default case to catch bad input
     }
+    logGlobalVariables();
+    console.log('-----------');
 };
 
-const numberPress = input => {
-    if (!currentInput) {
-        clearDisplay(); // moved this here from binaryOperatorPress - will ensure prev input displays until new input added.
-        currentInput = 0; // occasionally null sneaks through... this is where TypeScript would be great
-    }
-    display += input;
-    currentInput += input;
-    setDisplay(display);
+// when number button is pressed, take the number pressed (as string), join on to to currentRightNum string and set display accordingly: 
+const numberPress = numberPressed => {
+    // console.log(numberPressed, 'was passed in to numberPress');
+    // if truthy expression ensures null does not remain as part of the number being displayed (i.e. "null8")
+    (currentRightNum === null) ? currentRightNum = numberPressed : currentRightNum += numberPressed;
+    setDisplay(currentRightNum);
 };
 
-const unaryOperatorPress = input =>  {
-    if (!currentInput) currentInput = lastResult;
-    switch (input) {
-        case '+/-': currentInput -= (currentInput * 2); break
-        case '%': currentInput = currentInput /100; break
-        case  '√': currentInput = Math.sqrt(currentInput); break
+// when a unary operator is pressed, determine from string passed in what operation to perform, then evaluate, then update globals: 
+const unaryOperatorPress = unaryPressed =>  {
+    // first save unary press as most recent operator:
+    currentOperator = unaryPressed;
+
+    // establish operand - if no right number then reuse left number (allows for repeat operation)
+    let operand = null;
+    (!currentRightNum) ? operand = +leftNum : operand = +currentRightNum;
+
+    // determine which unary operator was pressed based upon string value passed in:
+    switch (unaryPressed) {
+        case '+/-': operand = -operand;
+        case '%': operand = operand / 100; break
+        case  '√': operand = Math.sqrt(operand); break
+        default: console.log('Error - unary input not found, it was', unaryPressed);
     }
-    currentInput = currentInput.toFixed(4);
-    if (!currentInput) currentInput = 0;
-    setDisplay(currentInput.toString());
-    lastResult = currentInput;
+
+    // TODO establish what to do with prevRightNum - what do I set this based on, if at all?
+
+    leftNum = operand.toString();
+    currentRightNum = null;
+    setDisplay(leftNum);
+
 }
 
-const binaryOperatorPress = input => {
-    lastOperator = input; // set operator based upon button pressed
+// when a binary operator is pressed, determine from string passed in what operation to perform, then evaluate, then update globals: 
+const binaryOperatorPress = binaryPressed => {
+    let output = null; operand1 = null, operand2 = null;
 
-    // allows for operation on previously saved result (if next key press after `=` is a binary operator)
-    if (currentInput === null) currentInput = lastResult;
-    
-    // move current input to previous input then reset to zero:
-    previousInput = currentInput;
-    currentInput = 0;
-    display = '';
+    const performBinaryOperation = binaryToUse => {
+        console.log(`Doing: ${operand1} ${binaryToUse} ${operand2}...`)
+        switch (binaryToUse) {
+            case ('+'): output = operand1 + operand2; break
+            case ('-'): output = operand1 - operand2; break
+            case ('x'): output = operand1 * operand2; break
+            case ('/'): output = operand1 / operand2; break
+            default: console.log('Error - binary input not found, input was', binaryPressed);
+        }
+        output = output.toString();
+
+        if (output.includes('.')) {
+            output = handleTrailingZeros(output);
+        }
+
+        console.log('...output from binaryOperatorPressed is', output);
+    }
+
+    if (leftNum && currentOperator && currentRightNum) {
+        console.log('Consecutive binary operation!');
+        operand1 = +leftNum;
+        operand2 = +currentRightNum;
+        performBinaryOperation(currentOperator);
+        leftNum = output; // ! check that this works
+        currentOperator = binaryPressed;
+        prevRightNum = currentRightNum;
+        currentRightNum = null;
+        setDisplay(leftNum);
+    } else if (currentRightNum) {
+        console.log('Only found current right num which is', currentRightNum);
+        leftNum = currentRightNum;
+        currentOperator = binaryPressed;
+        currentRightNum = null;
+    } else if (leftNum) {
+        console.log('Only a left num found which is', leftNum);
+        currentOperator = binaryPressed;
+    }
+
 }
 
+// TODO - either incorporate into binaryOperatorPress or break down into functions accessible to both equalsPress and binaryOperatorPress
 const equalsPress = () => {
-    evaluateInputs(previousInput, currentInput); // here's where the mathgic happens
-    resetInputs();
+    let output = null; operand1 = null, operand2 = null;
+
+    const performBinaryOperation = binaryToUse => {
+        switch (binaryToUse) {
+            case ('+'): output = operand1 + operand2; break
+            case ('-'): output = operand1 - operand2; break
+            case ('x'): output = operand1 * operand2; break
+            case ('/'): output = operand1 / operand2; break
+            default: console.log('Error - binary input not found, input was', binaryPressed);
+        }
+        output = output.toString();
+
+        if (output.includes('.')) {
+            output = handleTrailingZeros(output);
+        }
+
+        console.log('Output from equalsPress is', output);
+    }
+
+    if (leftNum && currentOperator && currentRightNum) {
+        console.log('Equals pressed, LNum and COp and CRnum found:');
+        operand1 = +leftNum;
+        operand2 = +currentRightNum;
+        performBinaryOperation(currentOperator);
+        leftNum = output; // ! check that this works
+        prevOperator =  currentOperator;
+        currentOperator = null;
+        prevRightNum = currentRightNum;
+        currentRightNum = null;
+        setDisplay(leftNum);
+    } else if (leftNum && currentOperator && prevRightNum) {
+        console.log('Equals pressed again, LNum and COp found, reusing PRNum:');
+        operand1 = +leftNum;
+        operand2 = +prevRightNum;
+        performBinaryOperation(currentOperator);
+        leftNum = output; // ! check that this works
+        setDisplay(leftNum);
+    } else if (leftNum && prevOperator && prevRightNum) {
+        console.log('Found left num, reusing prevOp and prevR');
+        operand1 = +leftNum;
+        operand2 = +prevRightNum;
+        performBinaryOperation(prevOperator);
+        leftNum =  output;
+        setDisplay(leftNum);
+    }
+}
+
+const handleTrailingZeros = floatAsString => {
+
+    console.log('There be trailing zeros!');
+
+    let output = floatAsString;
+
+    const trimDecimalZeros = (str) => {
+        if (str.endsWith('0')) {
+            str.slice(0, -1);
+            trimDecimalZeros(str);
+        }
+    }
+
+    trimDecimalZeros(output);
+
+    return output;
 }
 
 const cancel = () => {
-    currentInput = 0; previousInput = 0;
-    buttonPress = null; lastOperator = null;
-    display = ''
+    resetAll();
     clearDisplay();
 }
 
+// * -- Update Display:
 
-// * -- Update display:
-const displayTarget = document.getElementById('screen-display');
+const display = document.getElementById('screen-display');
 
-const setDisplay = value => {
-    // if statement stops large values from overlapping screen, instead showing silly face
-    if (value.length > 8) value = "Q_Q";
-    displayTarget.innerText = value;
+// takes in a string (representing a number) and renders this in the calculator's display
+const setDisplay = numberAsString => {
+    console.log('Unfiltered number as string:', numberAsString);
+    let displayValue = numberAsString
+
+    // handle floats in order to fit number displayed to screen
+    if (numberAsString.includes('.')){
+        (numberAsString.indexOf('.') > 9) ? displayValue ="err" : displayValue = numberAsString.slice(0, 8);
+    }
+
+    // handle large ints:
+    if (displayValue.length > 8) displayValue = "err"; // stops value being displayed from overlapping the screen
+
+    // otherwise set display:
+    display.innerText = displayValue;
 }
-const clearDisplay = () => displayTarget.innerText = '';
 
-// * -- Math time:
-
-const evaluateInputs = (previous, current) => {
-    let output = null;
-
-    // if there is no previous input, treat this as 0
-    if (!previousInput) {
-        previousInput = '0'
-    }
-
-    const previousN = parseFloat(previous);
-    const currentN = parseFloat(current); 
-    switch (lastOperator) {
-        case '/':
-            output = previousN / currentN; break;
-        case 'x':
-            output = previousN * currentN; break;
-        case '-':
-            output = previousN - currentN; break;
-        case '+':
-            output = previousN + currentN; break;
-        default:
-            output = currentN; // if no operator pressed, saves current input to output
-    }
-
-    if (!output) {
-        if (!lastResult) lastResult = 0;
-        output = lastResult;
-    }
-
-    lastResult = output;
-
-    let stringyOutput = output.toString();
-
-    // trim trailing zeros in string to be displayed:
-    if (stringyOutput.includes('.')) {
-        stringyOutput = stringyOutput.slice(0, 8);
-        
-        const trimDecimalZeros = (str) => {
-            if (str.endsWith('0')) {
-                str.slice(0, -1);
-                trimDecimalZeros(str);
-            }
-        }
-
-        trimDecimalZeros(stringyOutput);
-    }
-
-    setDisplay(stringyOutput);
-    display = '';
-}
+const clearDisplay = () => display.innerText = '';
 
 // * -- Change Modes:
 
@@ -172,7 +245,3 @@ modeChangeButtons[0].addEventListener('click', setLightMode);
 // dark mode:
 const setDarkMode = () => styleSheet.setAttribute('href', 'css/nightmode.css')
 modeChangeButtons[1].addEventListener('click', setDarkMode)
-
-// daft mode:
-const setDaftMode = () => console.log('Not yet added :(');
-modeChangeButtons[2].addEventListener('click', setDaftMode);
