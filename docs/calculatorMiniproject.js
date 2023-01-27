@@ -63,6 +63,10 @@ const processButtonPress = input => {
 // when number button is pressed, take the number pressed (as string), join on to to currentRightNum string and set display accordingly: 
 const numberPress = numberPressed => {
     // console.log(numberPressed, 'was passed in to numberPress');
+    if (numberPressed === '.') {
+        if (!currentRightNum) currentRightNum = leftNum;
+        if (currentRightNum.includes('.')) numberPressed = '';
+    } 
     // if truthy expression ensures null does not remain as part of the number being displayed (i.e. "null8")
     (currentRightNum === null) ? currentRightNum = numberPressed : currentRightNum += numberPressed;
     setDisplay(currentRightNum);
@@ -70,26 +74,43 @@ const numberPress = numberPressed => {
 
 // when a unary operator is pressed, determine from string passed in what operation to perform, then evaluate, then update globals: 
 const unaryOperatorPress = unaryPressed =>  {
-    // first save unary press as most recent operator:
-    currentOperator = unaryPressed;
+    if (unaryPressed === '+/-') {
+        if (currentRightNum) {
+            currentRightNum = (-currentRightNum).toString();
+            setDisplay(currentRightNum);
+        } else if (currentOperator) {
+            currentRightNum = '-';
+            setDisplay(currentRightNum);
+        } else if (leftNum) {
+            leftNum = (-leftNum).toString();
+            setDisplay(leftNum);
+        } else {
+            currentRightNum = '-';
+            setDisplay(currentRightNum);
+        }
+    } else {
+            // first save unary press as most recent operator:
+        currentOperator = unaryPressed;
 
-    // establish operand - if no right number then reuse left number (allows for repeat operation)
-    let operand = null;
-    (!currentRightNum) ? operand = +leftNum : operand = +currentRightNum;
+        // establish operand - if no right number then reuse left number (allows for repeat operation)
+        let operand = null;
+        (!currentRightNum) ? operand = +leftNum : operand = +currentRightNum;
 
-    // determine which unary operator was pressed based upon string value passed in:
-    switch (unaryPressed) {
-        case '+/-': operand = -operand;
-        case '%': operand = operand / 100; break
-        case  '√': operand = Math.sqrt(operand); break
-        default: console.log('Error - unary input not found, it was', unaryPressed);
+        // determine which unary operator was pressed based upon string value passed in:
+        switch (unaryPressed) {
+            case '%': operand = operand / 100; break
+            case  '√': operand = Math.sqrt(operand); break
+            default: console.log('Error - unary input not found, it was', unaryPressed);
+        }
+
+        // TODO establish what to do with prevRightNum - what do I set this based on, if at all?
+
+        leftNum = operand.toString();
+        currentRightNum = null;
+        setDisplay(leftNum);
+
     }
 
-    // TODO establish what to do with prevRightNum - what do I set this based on, if at all?
-
-    leftNum = operand.toString();
-    currentRightNum = null;
-    setDisplay(leftNum);
 
 }
 
@@ -104,14 +125,10 @@ const binaryOperatorPress = binaryPressed => {
             case ('-'): output = operand1 - operand2; break
             case ('x'): output = operand1 * operand2; break
             case ('/'): output = operand1 / operand2; break
-            default: console.log('Error - binary input not found, input was', binaryPressed);
-        }
-        output = output.toString();
-
-        if (output.includes('.')) {
-            output = handleTrailingZeros(output);
+            default: console.log('Error - binary input not found, input was', binaryToUse);
         }
 
+        output = (output*1).toString(); // the *1 eliminates any unneccessary trailing 0s
         console.log('...output from binaryOperatorPressed is', output);
     }
 
@@ -149,11 +166,7 @@ const equalsPress = () => {
             case ('/'): output = operand1 / operand2; break
             default: console.log('Error - binary input not found, input was', binaryPressed);
         }
-        output = output.toString();
-
-        if (output.includes('.')) {
-            output = handleTrailingZeros(output);
-        }
+        output = (output*1).toString();
 
         console.log('Output from equalsPress is', output);
     }
