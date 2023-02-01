@@ -16,7 +16,7 @@ var buttons = document.querySelectorAll(".button-inner");
 // Get button innerHTML string, pass this as input to processButtonPress:
 function handleClick() {
     var buttonPress = this.innerHTML;
-    window.navigator.vibrate(200);
+    // window.navigator.vibrate(200); // ? causing issues on mobile?
     processButtonPress(buttonPress); // see section immediately below:
 }
 ;
@@ -186,4 +186,3 @@ modeChangeButtons[0].addEventListener('click', setLightMode);
 // dark mode:
 var setDarkMode = function () { return styleSheet.setAttribute('href', 'css/nightmode.css'); };
 modeChangeButtons[1].addEventListener('click', setDarkMode);
-//# sourceMappingURL=mainRewrite.js.map
