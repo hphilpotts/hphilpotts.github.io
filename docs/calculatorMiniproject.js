@@ -1,10 +1,10 @@
 // MAIN SCRIPT 2.0
-var leftNum = null; // the number (as string) on the left hand side of the sum - will also be used to store the number most recently evaluated
-var currentRightNum = null; // the number (as string) on the right hand side of a sum, currently being input by used
-var prevRightNum = null; // the previously input currentRightNum (storing this allows repeated press of `=` to repeat previous operation)
-var currentOperator = null; // the most recently pressed operator, held ready for eval in the event of `=` or binary operator press
-var prevOperator = null; // the previously used binary operator, allows for repeated press of `=` 
-var resetAll = function () {
+let leftNum = null; // the number (as string) on the left hand side of the sum - will also be used to store the number most recently evaluated
+let currentRightNum = null; // the number (as string) on the right hand side of a sum, currently being input by used
+let prevRightNum = null; // the previously input currentRightNum (storing this allows repeated press of `=` to repeat previous operation)
+let currentOperator = null; // the most recently pressed operator, held ready for eval in the event of `=` or binary operator press
+let prevOperator = null; // the previously used binary operator, allows for repeated press of `=` 
+let resetAll = function () {
     leftNum = null;
     currentRightNum = null;
     prevRightNum = null;
@@ -12,22 +12,21 @@ var resetAll = function () {
     prevOperator = null;
 };
 // * -- Event listeners and handle button click:
-var buttons = document.querySelectorAll(".button-inner");
+const buttons = document.querySelectorAll(".button-inner");
 // Get button innerHTML string, pass this as input to processButtonPress:
 function handleClick() {
-    var buttonPress = this.innerHTML;
-    // window.navigator.vibrate(200); // ? causing issues on mobile?
+    const buttonPress = this.innerHTML;
     processButtonPress(buttonPress); // see section immediately below:
 }
 ;
 buttons.forEach(function (button) { return button.addEventListener('click', handleClick); });
 // * -- Processing button presses:
 // input is the innerHTML from the button being pressed, passed from handleClick() above:
-var processButtonPress = function (input) {
+const processButtonPress = function (input) {
     // button innerHTML strings grouped by type (with respective functions to run for each type)
-    var unaryOperators = ['+/-', '%', '√'];
-    var binaryOperators = ['/', 'x', '-', '+'];
-    var numbers = new RegExp("[0-9]"); // regex previously included '.' as well, however this caused every other `numbers.test(input)` to fail
+    let unaryOperators = ['+/-', '%', '√'];
+    let binaryOperators = ['/', 'x', '-', '+'];
+    let numbers = new RegExp("[0-9]"); // regex previously included '.' as well, however this caused every other `numbers.test(input)` to fail
     switch (true) {
         case (numbers.test(input) || input === '.'): // decimal can be mostly handled the same way as a number (press): i.e. as string
             numberPress(input);
@@ -49,7 +48,7 @@ var processButtonPress = function (input) {
     }
 };
 // when number button is pressed, take the number pressed (as string), join on to to currentRightNum string and set display accordingly: 
-var numberPress = function (numberPressed) {
+const numberPress = function (numberPressed) {
     if (numberPressed === '.') { // decimals need to be handled a little differently
         if (!currentRightNum)
             currentRightNum = leftNum; // allows for most recent result to be updated with decimal point
@@ -61,7 +60,7 @@ var numberPress = function (numberPressed) {
     setDisplay(currentRightNum); // see Update Display section below
 };
 // when a unary operator is pressed, determine from string passed in what operation to perform, then evaluate, then update globals: 
-var unaryOperatorPress = function (unaryPressed) {
+const unaryOperatorPress = function (unaryPressed) {
     if (unaryPressed === '+/-') { // despite also being a unary operator, it turns out '+/-' needs to be handled differently
         switch (true) {
             case (currentRightNum != null): // if there is currentRightNum then operate on this
@@ -82,7 +81,7 @@ var unaryOperatorPress = function (unaryPressed) {
         }
     }
     else { // other unary operators are handled simply:
-        var operand = null;
+        let operand = null;
         (!currentRightNum) ? operand = +leftNum : operand = +currentRightNum;
         switch (unaryPressed) {
             case '%':
@@ -98,8 +97,8 @@ var unaryOperatorPress = function (unaryPressed) {
     }
 };
 // when a binary operator is pressed, determine from string passed in what operation to perform, then evaluate, then update globals: 
-var binaryOperatorPress = function (binaryPressed) {
-    var operand1 = +leftNum, operand2 = +currentRightNum;
+const binaryOperatorPress = function (binaryPressed) {
+    let operand1 = +leftNum, operand2 = +currentRightNum;
     if (leftNum && currentOperator && currentRightNum) { // if sum already present in saved vars, evaluate and save binaryPressed as new currentOperator
         leftNum = performBinaryOperation(operand1, binaryPressed, operand2); // see function below equalsPress()
         currentOperator = binaryPressed;
@@ -117,8 +116,8 @@ var binaryOperatorPress = function (binaryPressed) {
     }
 };
 // TODO - either incorporate into binaryOperatorPress or break down into functions accessible to both equalsPress and binaryOperatorPress
-var equalsPress = function () {
-    var operand1 = +leftNum, operand2 = null;
+const equalsPress = function () {
+    let operand1 = +leftNum, operand2 = null;
     if (leftNum && currentOperator && currentRightNum) {
         operand2 = +currentRightNum;
         leftNum = performBinaryOperation(operand1, currentOperator, operand2);
@@ -138,8 +137,8 @@ var equalsPress = function () {
     setDisplay(leftNum);
 };
 // Used in both binaryOperatorPress and equalsPress:
-var performBinaryOperation = function (val1, operator, val2) {
-    var output = null;
+const performBinaryOperation = function (val1, operator, val2) {
+    let output = null;
     switch (operator) {
         case ('+'):
             output = val1 + val2;
@@ -157,15 +156,15 @@ var performBinaryOperation = function (val1, operator, val2) {
     }
     return (output * 1).toString(); // the *1 eliminates any unneccessary trailing 0s
 };
-var cancel = function () {
+const cancel = function () {
     resetAll();
     clearDisplay();
 };
 // * -- Update Display:
-var display = document.getElementById('screen-display');
+const display = document.getElementById('screen-display');
 // takes in a string (representing a number) and renders this in the calculator's display
-var setDisplay = function (numberAsString) {
-    var displayValue = numberAsString;
+const setDisplay = function (numberAsString) {
+    let displayValue = numberAsString;
     // handle floats in order to fit number displayed to screen, if very large float (>99999999) display error, else trim down
     if (numberAsString.includes('.'))
         (numberAsString.indexOf('.') > 9) ? displayValue = "err" : displayValue = numberAsString.slice(0, 8);
@@ -175,14 +174,14 @@ var setDisplay = function (numberAsString) {
     // then set display:
     display.innerText = displayValue;
 };
-var clearDisplay = function () { return display.innerText = ''; };
+const clearDisplay = function () { return display.innerText = ''; };
 // * -- Change Modes:
-var modeChangeButtons = document.getElementsByClassName('control-button');
-var styleSheet = document.getElementById('current-stylesheet');
-var currentStylesheet = styleSheet.getAttribute('href');
+const modeChangeButtons = document.getElementsByClassName('control-button');
+const styleSheet = document.getElementById('current-stylesheet');
+const currentStylesheet = styleSheet.getAttribute('href');
 // light mode:
-var setLightMode = function () { return styleSheet.setAttribute('href', 'css/lightmode.css'); };
+const setLightMode = function () { return styleSheet.setAttribute('href', 'css/lightmode.css'); };
 modeChangeButtons[0].addEventListener('click', setLightMode);
 // dark mode:
-var setDarkMode = function () { return styleSheet.setAttribute('href', 'css/nightmode.css'); };
+const setDarkMode = function () { return styleSheet.setAttribute('href', 'css/nightmode.css'); };
 modeChangeButtons[1].addEventListener('click', setDarkMode);
