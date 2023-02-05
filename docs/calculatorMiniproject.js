@@ -281,7 +281,7 @@ var startDaftMode = function () {
     var handleSound = function (input) {
         var audioElement = document.getElementById('audio');
         display.innerHTML = input;
-        var audioFile = "/sounds/" + (input.replace(' ', '_') + '.wav');
+        var audioFile = "/docs/" + (input.replace(' ', '_') + '.wav');
         audioElement.setAttribute('src', audioFile);
         audioElement.play().catch();
     };
