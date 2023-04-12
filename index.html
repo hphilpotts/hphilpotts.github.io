@@ -1,109 +1,663 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Henry Philpotts' Portfolio</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    
-    <!-- Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
-    
-    <!-- Vanilla CSS -->
-    <link rel="stylesheet" href="/css/style.css">
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
 
+  <link rel="stylesheet" href="style.css">
+  <!-- <link rel="stylesheet" href="testColours.css"> -->
+  <title>Document</title>
+
+  <!-- jQuery -->
 </head>
-<body class="mid-blue-bg beige-text light-link" style="font-size: 12;">
-  <nav class="navbar navbar-expand-lg navbar-dark">
-    <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation" id="navbar-toggler">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link light-link embiggen" aria-current="page" href="/">Home</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle embiggen" href="./coming-soon.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Personal Projects
-            </a>
-            <ul class="dropdown-menu dark-link">
-              <!-- <li><a class="dropdown-item" href="./coming-soon.html">'Food Journal' | MERN Stack</a></li> -->
-              <li><a class="dropdown-item embiggen" href="./calculator.html">'Simple Static Calculator' | HTML-CSS-JS | Mini Project</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle embiggen" href="./coming-soon.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              GA London Projects
-            </a>
-            <ul class="dropdown-menu dark-link">
-              <li><a class="dropdown-item embiggen" href="./project4.html">'Pokégotchi' | MERN Stack | Group Project</a></li>
-              <li><a class="dropdown-item embiggen" href="./project3.html">'Forage' | Django-SQL | Group Project</a></li>
-              <li><a class="dropdown-item embiggen" href="./project2.html">'Album Review App' | Express-MongoDB | Paired Project</a></li>
-              <li><a class="dropdown-item embiggen" href="./project1.html">'The Simpsons' Guess Who?' | HTML-CSS-JS | Solo Project</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle embiggen" href="./about.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              About Me
-            </a>
-            <ul class="dropdown-menu dark-link">
-              <li><a class="dropdown-item embiggen" href="./skills.html">Skills</a></li>
-              <li><a class="dropdown-item embiggen" href="./journey.html">Coding Journey</a></li>
-              <li><a class="dropdown-item embiggen" href="./career.html">Career to Date</a></li>
-              <li><a class="dropdown-item embiggen" href="./downtime.html">Downtime</a></li>
-              <li><a class="dropdown-item embiggen" href="./contact.html">Contact</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-      <a class="navbar-brand" href="#" id="navbar-brand-a">hphilpotts : Portfolio</a>
-    </div>
+
+<body>
+  <nav id="navbar-mobile">
+    <div class="navbar-link" id="hello-link-mobile">Hello</div>
+    <div class="navbar-link" id="projects-link-mobile">Skills/Projects</div>
+    <div class="navbar-link" id="about-link-mobile">About</div>
   </nav>
+  <div id="main-container">
 
-  <main>
-    <div class="d-flex flex flex-column p-2 narrow">
-      <div>
-        <h1 class="text-center">hphilpotts: Portfolio</h1>
+    <nav id="navbar">
+      <div class="navbar-link" id="hello-link">Hello</div>
+      <div class="navbar-link" id="projects-link">Skills/Projects</div>
+      <div class="navbar-link" id="about-link">About</div>
+    </nav>
+
+    <div class="full-page-screen" id="landing-screen">
+      <div class="content-container content-container-vertical" id="landing-container">
+        <div class="quarter-div flex-centered">
+          <div class="inner"></div>
+        </div>
+        <div class="half-div flex-centered highlighted">
+          <h2>hphilpotts: portfolio site</h2>
+        </div>
+        <div class="quarter-div flex-centered vertical">
+          <div class="inner highlighted">scroll down</div>
+          <div class="inner">
+            <div id="down-arrow"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="full-page-screen" id="hello-screen">
+      <div class="content-container content-container-vertical">
+        <div class="quarter-div flex-centered">
+          <img class="contained-image" id="profile-img" src="img/profile.jpg" alt="">
+        </div>
+        <div class="quarter-div flex-centered vertical">
+          <div class="inner hello-text center-align" id="hello-line">
+            Hello! I'm Henry Philpotts (but usually known as Harry!) and I'm an aspiring
+            Junior Software Developer. Welcome to my portfolio site!
+          </div>
+        </div>
+        <div class="quarter-div flex-centered">
+          <div class="inner hello-text left-align">
+            I'm currently looking for my first coding role having graduated from General Assembly London's
+            Software Engineering Immersive in November 2022.
+          </div>
+        </div>
+        <div class="quarter-div flex-centered">
+          <div class="inner hello-text right-align">
+            Keep scrolling to <span id="projects-span">Skills/Projects</span> for an overview of my work so
+            far and the
+            skillsets gained through
+            building these projects. To find out more about who I am and what I do, scroll again or click on
+            <span id="about-span">'About Me'</span>
+            in
+            the navigation header.
+          </div>
+        </div>
       </div>
 
-      <img src="./img/IMG_3978.jpg" alt="hphilpotts mugshot" class="avatar">
-      <h5>
-        Hello! I'm Henry Philpotts (but usually known as Harry!) and I'm an aspiring Junior Software Developer.
-      </h5><br>
-      <p>I'm currently looking for my first coding role having graduated from General Assembly London's Software Engineering Immersive in November 2022.</p>
-      <p> Post-course, I've been learning about hosting different web apps now that Heroku has gone 'paid-only'. It has been a blessing in disguise as I've learned a lot (not least that AWS has a very steep learning curve!). I'm also keeping my general coding skills sharp through doing daily coding challenges in JS and Python in order to minimise skill atrophy during the long job search.</p>
-      <p>As well as building my <a href="./skills.html">existing skills</a>, I have recently been learning TypeScript through free courses and Codewars challenges. It's been great so far - the benefits of TS became apparent so quickly! My primary objective over the next month is to put what I have learned into practice as part of a project.</p>
-      <p>Lastly, I recently read up on Algorithms (specifically, 'Grokking Algorithms' by Aditya Bhargava) as it turns out you can't just <span style="font-family: courier;">array.sort()</span> your way out of everything once things start to scale up... Off the back of reading (and enjoying) this book, I have started CS50x and am loving learning so much already!</p>
-      <!-- TODO update these once completed -->
-      <hr>
-      <p>- Use the navigation menu at the top of the page to look at summary Readmes for the projects within my Portfolio.<br> &nbsp; Links to the deployed projects, GitHub repos and full Readmes are available within each summary Readme. </p>
-      <p>- To find out more about who I am and what I do, click on 'About Me' in the navigation header.</p>
-      <p>- My contact details are <a href="./contact.html">here</a> - follow me or just reach out and say hello!</p>
-      <footer style="max-height: 5vh;">
-        <hr>
-        <div class="d-flex flex p-2 narrow justify-content-center">
-          <a href="https://www.linkedin.com/in/henry-philpotts/" class="footer-link beige-text light-link">LinkedIn</a>
-          <a href="https://github.com/hphilpotts" class="footer-link beige-text light-link">GitHub</a>
-          <a href="https://www.codewars.com/users/hphilpotts" class="footer-link beige-text light-link">Codewars</a>
-        </div>
-      </footer>
     </div>
-  </main>
 
+    <div class="full-page-screen" id="projects-screen">
+      <div class="content-container" id="projects-container">
 
-      
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-    <!-- Vanilla JS -->
-    <script src="./js/main.js"></script>
-    <!-- Vanilla JS -->
-    <script src="./js/main.js"></script>
-  </body>
+        <div class="slider-icons">
+          <div class="icon">
+            <img class="icon-img" index="0" id="html" src="img/html5.svg" alt="HTML5 icon">
+          </div>
+          <div class="icon">
+            <img class="icon-img" index="1" id="css" src="img/css3.svg" alt="CSS3 icon">
+          </div>
+          <div class="icon">
+            <img class="icon-img" index="2" id="js" src="img/javascript.svg" alt="JavaScript icon">
+          </div>
+          <div class="icon">
+            <img class="icon-img" index="3" id="ts" src="img/typescript.svg" alt="TypeScript icon">
+          </div>
+          <div class="icon">
+            <img class="icon-img" index="4" id="node" src="img/nodedotjs.svg" alt="Node.js icon">
+          </div>
+          <div class="icon">
+            <img class="icon-img" index="5" id="express" src="img/express.svg" alt="Express JS icon">
+          </div>
+          <div class="icon">
+            <img class="icon-img" index="6" id="react" src="img/react.svg" alt="React icon">
+          </div>
+          <div class="icon">
+            <img class="icon-img" index="7" id="mongo" src="img/mongodb.svg" alt="MongoDB icon">
+          </div>
+          <div class="icon">
+            <img class="icon-img" index="8" id="python" src="img/python.svg" alt="Python icon">
+          </div>
+          <div class="icon">
+            <img class="icon-img" index="9" id="django" src="img/django.svg" alt="Django icon">
+          </div>
+          <div class="icon">
+            <img class="icon-img" index="10" id="postgres" src="img/postgresql.svg" alt="PostgreSQL icon">
+          </div>
+          <div class="icon">
+            <img class="icon-img" index="11" id="bootstrap" src="img/bootstrap.svg" alt="Bootstrap icon">
+          </div>
+          <div class="icon">
+            <img class="icon-img" index="12" id="mui" src="img/mui.svg" alt="MUI icon">
+          </div>
+          <div class="icon">
+            <img class="icon-img" index="13" id="jwt" src="img/jsonwebtokens.svg" alt="JWT icon">
+          </div>
+          <div class="icon">
+            <img class="icon-img" index="14" id="postman" src="img/postman.svg" alt="Postman icon">
+          </div>
+          <div class="icon">
+            <img class="icon-img" index="15" id="jquery" src="img/jquery.svg" alt="jQuery icon">
+          </div>
+        </div>
+
+        <!-- slider code based on: https://css-tricks.com/how-to-make-a-css-only-carousel/ -->
+        <div class="slider" id="slider">
+          <div class="slide" id="slide-0">
+            <div class="skills-slide">
+              <div>
+                <p>Languages</p>
+                <p>JavaScript, Python3, TypeScript</p>
+              </div>
+              <div>
+                <p>Frontend</p>
+                <p>HTML, CSS, DOM, jQuery, React, Django CBVs, Bootstrap, Materialize, MUI, AJAX, Axios
+                </p>
+              </div>
+              <div>
+                <p>Backend</p>
+                <p>Node.js, MongoDB Compass/Atlas, Express, Mongoose, Python, Django, PostgreSQL,
+                  pgAdmin4, JWT, NoSQL, SQL</p>
+              </div>
+              <div>
+                <p>Project</p>
+                <p>Git, GitHub, Trello, Figma, Heroku, Postman, 3rd Party APIs</p>
+              </div>
+              <div>
+                <div class="show-mobile" id="right-arrow"></div>
+                <h4 class="highlighted">Scroll along to see example projects</h4>
+              </div>
+            </div>
+          </div>
+          <div class="slide" id="slide-1">
+            <div class="slide-title">
+              <h2>VegApp - in progress!</h2>
+              <h3>React Frontend App</h3>
+              <h3>Express / Node.js Backend API connected to MongoDB</h3>
+            </div>
+            <div class="slide-stack"> React | ExpressJS | Node.js | MongoDB | MUI</div>
+            <div class="slide-links">
+              <a href="https://github.com/hphilpotts/veg-app-frontend">
+                GitHub Front-end</a> |
+              <a href="https://github.com/hphilpotts/veg-app-backend">
+                GitHub Back-end</a>
+            </div>
+            <div class="slide-body">
+              <div class="slide-body-content" id="slide-1-body">
+                <div class="slide-body-content-item" id="item-1-0">
+                  <p>MERN stack: a React Frontend app linked to a MongoDB-connected Node.js/Express
+                    Backend API.</p>
+                  <p>The purpose of this app is to track daily and weekly fruit and veg consumption. I
+                    chose to build this as I was dissatisfied with my GA Project 4 'Pokegotchi'
+                    React App - we had run out of time as a team, meaning the project was not completed.</p>
+                  <p>Currently, the Backend API is complete but not yet hosted. The Frontend app is
+                    under construction and is my current side-project. Going back to React after a
+                    number of months has been challenging but rewarding - I'm excited to demonstrate what I
+                    can do!</p>
+                </div>
+                <div class="slide-body-content-item" id="item-1-1">
+                  <img class="slide-body-content-item-img" src="/img/vegappScreenshot.png" alt="">
+                </div>
+              </div>
+              <div class="slide-body-btn" id="slide-1-btn">
+                <p class="highlighted" id="slide-1-0" href="#item-1-0">1</p>
+                <p class="highlighted" id="slide-1-1" href="#item-1-1">2</p>
+              </div>
+            </div>
+          </div>
+          <div class="slide" id="slide-2">
+            <div class="slide-title">
+              <h2>TypeScript Calculator</h2>
+            </div>
+            <div class="slide-stack">TypeScript | HTML5 | CSS3</div>
+            <div class="slide-links">
+              <a href="https://hphilpotts.github.io/miniproject-static-calculator/">
+                Deployment </a> |
+              <a href="https://github.com/hphilpotts/miniproject-static-calculator">
+                GitHub</a>
+            </div>
+            <div class="slide-body">
+              <div class="slide-body-content" id="slide-2-body">
+                <div class="slide-body-content-item" id="item-2-0">
+                  <p>A simple, TypeScript-powered 'classic' calculator - hosted as a simple static
+                    site via GitHub Pages - with light/dark modes and a bonus 'daft' mode. </p>
+                  <p>Built as 'mini-project', my aim was to refresh and maintain my knowledge of
+                    frontend skills, with minimal reliance on dependencies / libraries.</p>
+                  <p>Initially powered by 'vanilla' JavaScript, I later converted the project to
+                    TypeScript in order to consolidate and practically apply my self-guided
+                    TypeScript learning.</p>
+                </div>
+                <div class="slide-body-content-item" id="item-2-1">
+                  <img class="slide-body-content-item-img" src="img/calculator.png" alt="">
+                </div>
+              </div>
+              <div class="slide-body-btn" id="slide-2-btn">
+                <p class="bold-highlighted" id="slide-2-0">1</p>
+                <p id="slide-2-1">2</p>
+              </div>
+            </div>
+          </div>
+          <div class="slide" id="slide-3">
+            <div class="slide-title">
+              <h2>Pokegotchi: MERN Stack Apps</h2>
+            </div>
+            <div class="slide-stack">JS | React | ExpressJS | Node.js | MongoDB</div>
+            <div class="slide-links">
+              <a
+                href="https://vercel.com/hphilpotts/pokegotchi-frontend-project-4-general-assembly-sei-66-rehost/BjyUi5YnEWNcredrEx4DLSsFNZyS">
+                Deployment </a> |
+              <a
+                href="https://github.com/hphilpotts/Pokegotchi-Frontend-Project-4-General-Assembly-SEI-66/tree/harrydev/src/pokegotchi">
+                GitHub Front-end</a> |
+              <a href="https://github.com/hphilpotts/Pokegotchi-Backend-Project-4-General-Assembly-SEI-66">
+                GitHub Back-end</a> |
+            </div>
+            <div class="slide-body">
+              <div class="slide-body-content" id="slide-3-body">
+                <div class="slide-body-content-item" id="item-3-0">
+                  <p>This is a MERN stack web application
+                    - Pokégotchi - built as group of three: (<a href="https://github.com/EHCarr">Ashish</a> (Team
+                    Leader), <a href="https://github.com/Emsley1d">Dan</a> and me) in a timescale of
+                    one
+                    week,
+                    using linked frontend and backend applications: a Node.js backend, with
+                    Express
+                    framework and an Atlas hosted MongoDB database, linked to a React-based
+                    frontend
+                    application.
+                  </p>
+                  <img class="slide-body-content-item-img" src="/img/project4.png" alt="">
+
+                </div>
+                <div class="slide-body-content-item hidden" id="item-3-1">
+                  <p>
+                    This was Project 4 - the
+                    'capstone' project - completed as part of General Assembly
+                    London's Software Engineering Immersive course. We presented a deployed
+                    version
+                    to
+                    my Instructional Team and fellow SEI cohort on 26/08/22.
+                  </p>
+                  <img class="slide-body-content-item-img" src="/img/project4wf.png" alt="">
+                </div>
+                <div class="slide-body-content-item hidden" id="item-3-2">
+                  <p>
+                    This web app is a crossover between Tamagotchi and Pokémon, where users
+                    can
+                    select a Pokémon and then look after them: for example by healing them
+                    if
+                    injured in battle, or feeding them if they are hungry after not being
+                    fed for a
+                    while. The frontend app makes use of React's Single Page Application
+                    capability,
+                    meaning that the UI can render and update without the need for
+                    navigating
+                    between pages.
+                  </p>
+                </div>
+                <div class="slide-body-content-item hidden" id="item-3-3">
+                  <p>
+                    I focused primarily on the frontend of the application, creating and
+                    styling all
+                    components with the exception of Pokedex.js and Choice.js. This includes
+                    signup/sign in, frontend authentication, User CRUD operations, the
+                    Pokégotchi
+                    card and overall main App UI/UX. I also worked on the backend User APIs
+                    as well
+                    as some further backend APIs and functionality.
+                  </p>
+                  <br></br>
+                  <a
+                    href="https://docs.google.com/document/d/1t7EvTLFPsIKQwhfXQDHanu9GjoIeijHyInz7E7FQvCA/edit?usp=sharing">
+                    -> Link to full project README here.</a>
+                </div>
+              </div>
+              <div class="slide-body-btn" id="slide-3-btn">
+                <p class="bold-highlighted" id="button-3-0">1</p>
+                <p id="button-3-1">2</p>
+                <p id="button-3-2">3</p>
+                <p id="button-3-3">4</p>
+              </div>
+            </div>
+          </div>
+          <div class="slide" id="slide-4">
+            <div class="slide-title">
+              <h2>Forage: Django framework App</h2>
+            </div>
+            <div class="slide-stack">Python3 | Django | PostgreSQL | Materialize</div>
+            <div class="slide-links">
+              <a href="https://namesei66.herokuapp.com/">
+                Deployment </a> |
+              <a href="https://github.com/hphilpotts/Forage-Project-3-General-Assembly-SEI-66">
+                GitHub</a>
+            </div>
+            <div class="slide-body">
+              <div class="slide-body-content" id="slide-4-body">
+                <div class="slide-body-content-item" id="item-4-0">
+                  <p>This is an image-based, Pinterest-type 'mood board' web app, built as a team of
+                    three (<a href="https://github.com/HelenevB">Helene</a>, <a
+                      href="https://github.com/ic188002">Ivan</a> and me) in one week using Python
+                    within a Django framework, linked to PostgreSQL SQL database.</p>
+                  <p>Users can sign up, upload images, create mood boards and then link both their own
+                    or other users' images to their 'boards'.</p>
+                  <p>This project was completed as the third project for General Assembly London's
+                    Software Engineering Immersive course, and was presented to my Instructional
+                    Team and fellow SEI cohort on 07/10/22.</p>
+                </div>
+                <div class="slide-body-content-item" id="item-4-1">
+                  <img class="slide-body-content-item-img" src="/img/project3.png" alt="">
+                </div>
+                <div class="slide-body-content-item" id="item-4-2">
+                  <p> I enjoyed this project as it was an opportunity to create a web app using a
+                    'new'
+                    language after 6 weeks of JavaScript.</p>
+                  <p> I had spent some time self-teaching Python
+                    before starting the course - so had a bit of familiarity with its syntax - but
+                    crucially I found that the concepts and skills learned on JS translated across
+                    really quickly into Python having come back to it after a few months. Picking
+                    things up comparatively quickly was a great feeling!</p>
+                </div>
+                <div class="slide-body-content-item" id="item-4-3">
+                  <p>I had fun working with Django, especially using the 'baked in' functionality as
+                    compared to Express' more minimalist framework. I found it to be quick to pick
+                    up and I was a fan of the built-in admin app and auth features.</p>
+                  <p> Looking back, Python/Django seems somewhat 'alien' to me now, but I know that
+                    this project was great for my confidence, and has been a great foundation,
+                    putting me in a great place for when I revisit Python and Django in the future.
+                  </p>
+                  <a
+                    href="https://docs.google.com/document/d/1nJy5gzf3n5Jnp8f--a1C0feFb3mQ6IKMfbIpt3UtLls/edit?usp=sharing">
+                    -> Link to full project README here.</a>
+                </div>
+              </div>
+              <div class="slide-body-btn" id="slide-4-btn">
+                <p class="bold-highlighted" id="slide-4-0">1</p>
+                <p id="slide-4-1">2</p>
+                <p id="slide-4-2">3</p>
+                <p id="slide-4-3">4</p>
+              </div>
+            </div>
+          </div>
+          <div class="slide" id="slide-5">
+            <div class="slide-title">
+              <h2>Album Review App: ExpressJS App</h2>
+            </div>
+            <div class="slide-stack">JavaScript | Node.js | Express | MongoDB | Bootstrap</div>
+            <div class="slide-links">
+              <a href="https://albumreviewapp.cyclic.app/review/index">
+                Deployment </a> |
+              <a href="https://github.com/hphilpotts/Album-Review-App-Project-2-General-Assembly-SEI-66">
+                GitHub</a>
+            </div>
+            <div class="slide-body">
+              <div class="slide-body-content" id="slide-5-body">
+                <div class="slide-body-content-item" id="item-5-0">
+                  <p>This is a full-stack web app - Album Review App: a site where users can add and
+                    then review music albums - built as part of a paired project with <a
+                      href="https://github.com/milosjocic1">Milos Jocic</a> over the course of a
+                    week, for the second project in GA London's Software Engineering Immersive
+                    course.</p>
+                  <p>The app uses an Express framework, Node.js platform and an Atlas-hosted
+                    MongoDB NoSQL database. The deployed project was presented to my GA
+                    Instructional Team and fellow SEI cohort on 26/08/22. </p>
+                </div>
+                <div class="slide-body-content-item" id="item-5-1">
+                  <img class="slide-body-content-item-img" src="/img/project2.png" alt="">
+                </div>
+                <div class="slide-body-content-item" id="item-5-2">
+                  <p>I was 'Team Leader' for this project, taking responsibility for Git version
+                    control and deployment of the completed app.</p>
+                  <p>I worked on broader functionality across the site both in Frontend and Backend:
+                    setting up `server.js` config,
+                    creating Models, writing routes and APIs, implementing Views, forms and user
+                    input. I also took ownership of UI styling and mobile responsive formatting.</p>
+                </div>
+                <div class="slide-body-content-item" id="item-5-3">
+                  <p>This was a really exciting project for me, as it was the first time I had
+                    properly collaborated with another developer on a piece of work. We had been
+                    given relatively little in the way of guidance or instructions when it came
+                    to working as a pair; as a result, we had to very much learn how best to
+                    code together 'on the fly' which was both challenging and rewarding.</p>
+                  <p>I am really grateful for the fact that Milos and I had a great working dynamic:
+                    our skills and approaches complemented each other and we had fun working on
+                    this project together - for me this was a great start to collaborative
+                    coding!</p>
+                  <a
+                    href="https://docs.google.com/document/d/1acZ_VHKzlGZD0t573ljp8syDJhv25yHqHQmTzWddIeI/edit?usp=sharing">
+                    -> Link to full project README here.</a>
+                </div>
+              </div>
+              <div class="slide-body-btn" id="slide-5-btn">
+                <p class="bold-highlighted" id="slide-5-0">1</p>
+                <p id="slide-5-1">2</p>
+                <p id="slide-5-2">3</p>
+                <p id="slide-5-3">4</p>
+              </div>
+            </div>
+          </div>
+          <div class="slide" id="slide-6">
+            <div class="slide-title">
+              <h2>'The Simpsons' Guess Who? : web game</h2>
+            </div>
+            <div class="slide-stack">HTML5 | CSS3 | JavaScript | jQuery</div>
+            <div class="slide-links">
+              <a href="https://pages.git.generalassemb.ly/hphilpotts/project1-hp-guesswho/">
+                Deployment </a> |
+              <a href="https://github.com/hphilpotts/Simpsons-Guess-Who-Project-1-General-Assembly-SEI-66">
+                GitHub</a>
+            </div>
+            <div class="slide-body">
+              <div class="slide-body-content" id="slide-6-body">
+                <div class="slide-body-content-item" id="item-6-0">
+                  <img class="slide-body-content-item-img" src="/img/project1.png" alt="">
+                </div>
+                <div class="slide-body-content-item" id="item-6-1">
+                  <p>This is a frontend web game - The Simpsons themed Guess Who? - built solo 'from
+                    scratch' in one week using primarily HTML, CSS, JavaScript and jQuery.</p>
+                  <p>I built this as my first project for General Assembly London's Software
+                    Engineering
+                    Immersive course, and presented a deployed version to my Instructional Team and
+                    fellow SEI cohort on 26/08/22.</p>
+                </div>
+                <div class="slide-body-content-item" id="item-6-2">
+                  <p>This project holds a special place for me, as it represents the point at which I
+                    felt fully validated in my decision to commit to my career change.</p>
+                  <p>Being given the freedom to create anything I wanted, starting to find my own
+                    coding rhythm, happily losing hours at a time engrossed in code with my
+                    headphones on, and finally seeing my efforts come together into a project I was
+                    really proud of: these experiences were confirmation that this was something I
+                    genuinely enjoyed (and wasn't too bad at either)!</p>
+                </div>
+                <div class="slide-body-content-item" id="item-6-3">
+                  <p>This project also built my confidence in using HTML and JavaScript in a practical
+                    application, and it really helped my understanding of DOM manipulation, with and
+                    without jQuery.</p>
+                  <p>I had struggled with CSS positioning in the two weeks before the project (and -
+                    if I'm honest - during the project too!), however getting positive feedback on
+                    how my app was shaping up was another great confidence booster. Lastly, it gave
+                    me a great introduction to project work as a whole, particularly Wireframing,
+                    project planning and management, and Git version control.</p>
+                  <a
+                    href="https://docs.google.com/document/d/17jToa7_QE9N3h4rzVHJ-OLrOBAcZ49AzIPQlPfnPN9o/edit?usp=sharing">
+                    -> Link to full project README here.</a>
+                </div>
+              </div>
+              <div class="slide-body-btn" id="slide-6-btn">
+                <p class="bold-highlighted" id="slide-6-0">1</p>
+                <p id="slide-6-1">2</p>
+                <p id="slide-6-2">3</p>
+                <p id="slide-6-3">4</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="full-page-screen" id="about-screen">
+      <div class="content-container content-container-vertical" id="about-menu">
+        <div class="quarter-div flex-centered">
+          <div class="inner">
+            <h1>About:</h1>
+          </div>
+        </div>
+        <div class="quarter-div flex-centered">
+          <div class="inner">
+            <h2 class="highlighted about-button" id="journey-btn" target="#about-journey">Coding Journey
+            </h2>
+          </div>
+        </div>
+        <div class="quarter-div flex-centered">
+          <div class="inner">
+            <h2 class="highlighted about-button" id="career-btn" target="#about-career">Career to Date</h2>
+          </div>
+        </div>
+        <div class="quarter-div flex-centered">
+          <div class="inner">
+            <h2 class="highlighted about-button" id="downtime-btn" target="#about-downtime">Downtime</h2>
+          </div>
+        </div>
+      </div>
+      <div class="content-container content-container-vertical hidden" id="about-journey">
+        <div class="close highlighted about-button" id="journey-close" target="#about-journey">
+          x
+        </div>
+        <div class="about-content">
+          <p>
+            My passion for coding was first sparked by a friend with a similar career background who had
+            recently made a career switch into software development. We got talking about coding and the
+            software design industry and I recognised a lot of qualities that had made them successful in
+            their new career in myself. Thanks to some free time during a two week period of self-isolation
+            in 2021 I began to dig a little further, then moving on to completing various 'Codecademy'
+            courses on my days off, before being introduced to coding 'puzzles' such as Codewars. I soon
+            found that coding was something I really enjoyed and had the potential to be good at.
+            <br><br>
+            Seeing the possibility of being paid to do something enjoyable, fulfilling and genuinely
+            rewarding led me to explore the possibility of making the switch into Software Engineering from
+            my current role in Retail Management. Thanks to a flexible working opportunity with my current
+            employer, I was able to enrol on a full-time Software Engineering Immersive with GA in order to
+            fast-track the learning I had already started on my own and make the leap into a new career.
+            <br><br>
+            I completed GA London's Software Engineering Immersive Course in October 2022 and from there
+            have begun the search for my first coding job. In order to keep my coding skills sharp in the
+            meantime, I have been working on Personal Projects and sharpening up my GA London Projects
+            (links in header!) as well as lots of Codewars Kata <a href="https://www.codewars.com/users/hphilpotts">(CW
+              profile here!).</a>
+          </p>
+
+          <div>
+            <img src="./img/cw.png" alt="codewars" class="contained-image">
+          </div>
+
+          <p>
+            JavaScript is my favourite language to work in, although I really enjoy learning and working
+            with Python, and spent time learning Ruby prior to completing the GA course. In particular, I
+            find it fascinating how different approaches can be used to solve a problem, depending on the
+            language being used. I'm equally happy working on the front-end as much as the back-end - even
+            better if I get to do both!
+          </p>
+          <br>
+          <br>
+          <p class="highlighted about-button" target="#about-journey" style="text-align: center;">Back</p>
+        </div>
+      </div>
+      <div class="content-container content-container-vertical hidden" id="about-career">
+        <div class="close highlighted about-button" id="career-close" target="#about-career">
+          x
+        </div>
+        <div class="about-content">
+          <p>
+            I have ten years' Retail experience, managing small teams in demanding environments. I've always
+            been quick to learn, to grasp new concepts, and able to retain information well, but after
+            graduating from Universtity I found that I lacked some of the soft skills needed to succeed in
+            many workplaces. I wanted to find a job that would push me in these areas where I was less
+            comfortable, and this led me to Waitrose.
+            <br><br>
+            In the ten years since, I have progressed from part-time 'Christmas temp', to full-time Partner,
+            Team Leader, Duty Manager and then Team Manager. This progress represents the learning, building
+            and then sharpening of these people skills that I once lacked. I now find myself in a place
+            where the things that once challenged me at the beginning of my career are completely natural.
+            My next chapter requires looking for new challenges elsewhere that will instead stretch my
+            mental and technical abilities.
+            <br><br>
+            I am driven by results and recognition and have a competitive nature that pushes me to work
+            harder in order to be the best I can be. A culture of sharing in and celebrating successes is
+            something I always try to foster in the team around me. For this reason, I am looking to work in
+            an innovative, driven and supportive team that delivers collectively whilst pushing individuals
+            to fulfil their potential.
+            <br><br>
+            My belief is that the skills I have built in my career to date, coupled with the technical
+            knowledge gained from the GA course set me apart from other candidates. I know I will thrive in
+            any workplace environment thanks to the emotional literacy and professional approach I have
+            developed as well as my friendly, open nature.
+            <br><br>
+            My short term aim is a Junior Software Developer role in a team and company that values and
+            encourages personal and technical development, potentially in an established brand with a
+            strongly defined culture and vision. From this, I hope to build my skills to the point where I
+            can take on Mid-Weight and then Senior roles.
+          </p>
+          <br>
+          <br>
+          <p class="highlighted about-button" target="#about-career" style="text-align: center;">Back</p>
+        </div>
+      </div>
+      <div class="content-container content-container-vertical hidden" id="about-downtime">
+        <div class="close highlighted about-button" id="downtime-close" target="#about-downtime">
+          x
+        </div>
+        <div class="about-content">
+          <p>If I'm not working or sharpening my coding skills, I'll probably be either cycling or eating (and
+            on occasion, both).
+            <br><br>I got into cycling during the early days of 'lockdown' when my fear of London roads was
+            surpassed by my fear of the then-novel Coronavirus. I started out commuting on Santander Cycles
+            (in a shirt and tie, no less), but vowed never to become 'one of those' cyclists. Next thing I
+            knew, I was cycling in my free time as well as to work. Then a few months later came my first
+            new bike in about 20 years. Then the lycra started to appear. Then I started watching cycling on
+            TV. And finally, with my first road bike - a rather vicarly Condor Fratello - the transformation
+            was complete...
+          <div>
+            <img src="./img/bike.png" alt="powder blue Condor Fratello road bike against rural estate fencing"
+              class="contained-image">
+          </div>
+          <br>I've accepted the fact that - thanks in particular to my equal passion for unhealthy foods - I'm
+          unlikely to make it to the Tour, so instead I try to focus on going far rather than fast, preferably
+          with a decent cafe (or pub!) stop halfway. My goal in 2023 is to do at least one 100km 'metric
+          century' ride each month: less fun in the winter months but always an adventure!
+          <br><br>Where cycling has been a relatively new interest, food (primarily, the eating of) has been
+          an ever-present love-affair for as long as I can remember. I'd call myself a capable cook, but if
+          I'm honest all I have learned has been in order to increase my chances of eating delicious food,
+          rather than for any other reason or motiation. My move to London about 8 years ago opened up so many
+          doors in terms of incredible, varied things to discover and devour - and then attempt to replicate
+          at home.
+          <div>
+            <img src="./img/burger.png" alt="" class="contained-image">
+          </div>
+          <br>I'm on the quest for the perfect burger: Patty & Bun's 'Ari Gold' cheesburger is my favourite of
+          London's offerings, but I believe this iconic burger was surpassed by a homemade 'All-Borough
+          Market' attempt last year. Northfield Farm chuck/brisket mince and streaky bacon, Raclette and
+          cornichons from 'Jumi', 'Bread Ahead' buns...all very extravagant (and expensive) but worth it.
+          Second only to burgers comes pizza - I did a 'pizza crawl' for my last birthday - and otherwise I'm
+          happiest cooking and eating stews, ragus and pasta sauces.
+          <br><br>
+          Outside of food and cycling, I'm a reluctant runner (purely for medicinal purposes), a budding wine
+          enthusiast and a musical omnivore (any coding background music recommendations gladly accepted). I
+          took up the ukulele during my GA course - presumably much to the dismay of my neighbours, sorry! -
+          in order to give the other side of my brain a run out. I find strumming away on the uke' helps
+          encourage those 'eureka' moments when I'm stuck on some code. If I can get somewhere by walking I
+          will, I love exploring London and finding great new pubs, and I'd love to start travelling more than
+          I currently do!
+          </p>
+          <br>
+          <br>
+          <p class="highlighted about-button" target="#about-downtime" style="text-align: center;">Back</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer">
+      <a href="https://www.linkedin.com/in/henry-philpotts/">LinkedIn</a>
+      <a href="https://github.com/hphilpotts">GitHub</a>
+      <a href="https://www.codewars.com/users/hphilpotts">Codewars</a>
+    </div>
+  </div>
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="main.js"></script>
+
 </html>
