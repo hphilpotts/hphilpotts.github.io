@@ -12,6 +12,10 @@ a {
     text-decoration: none;
 }
 
+a:hover {
+    cursor: pointer;
+}
+
 .slide-links a {
     font-size: smaller;
 }
@@ -35,6 +39,10 @@ a {
 
 .navbar-link {
     margin: 0 5%;
+}
+
+.navbar-link:hover {
+    cursor: pointer;
 }
 
 #footer {
@@ -217,6 +225,10 @@ a {
     justify-content: space-around;
 }
 
+.slide-body-btn:hover {
+    cursor: pointer;
+} 
+
 .content-container-vertical {
     display: flex;
     flex-flow: column wrap;
@@ -313,6 +325,11 @@ a {
     box-sizing: border-box;
 }
 
+#down-arrow:hover,
+#right-arrow:hover {
+    cursor: pointer;
+}
+
 #right-arrow {
     position: relative;
     -webkit-transform: rotate(-135deg);
@@ -332,6 +349,10 @@ a {
 
 .about-content {
     margin-top: 10%;
+}
+
+.about-button:hover {
+    cursor: pointer;
 }
 
 .show-mobile {
