@@ -227,7 +227,7 @@ a:hover {
 
 .slide-body-btn:hover {
     cursor: pointer;
-} 
+}
 
 .content-container-vertical {
     display: flex;
@@ -308,6 +308,9 @@ a:hover {
     #hello-line {
         font-size: x-large;
     }
+    .slide-body-btn {
+        font-size: x-large;
+    }
 }
 
 /* credit: https://codepen.io/nxworld/pen/OyRrGy */
@@ -347,12 +350,12 @@ a:hover {
     font-weight: 50;
 }
 
-.about-content {
-    margin-top: 10%;
-}
-
 .about-button:hover {
     cursor: pointer;
+}
+
+.about-content {
+    margin-top: 10%;
 }
 
 .show-mobile {
@@ -414,4 +417,21 @@ a:hover {
 
 .hidden {
     display: none;
+}
+
+/* wave text animation - credit: https://codepen.io/alvarotrigo/pen/xxLvyOG */
+.wave span {
+    position: relative;
+    display: inline-block;
+    animation: wave 2.5s infinite;
+    animation-delay: calc(.1s * var(--i));
+}
+
+@keyframes wave {
+    0%, 40%, 100% {
+        transform: translateY(0)
+    }
+    20% {
+        transform: translateY(-1.5px)
+    }
 }
