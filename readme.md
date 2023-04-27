@@ -1,5 +1,13 @@
 # hphilpotts - Portfolio Site        
 
+## Links:       
+- [**Deployment**](hphilpotts.com)       
+- [Description](https://github.com/hphilpotts/hphilpotts.github.io#description)
+- [Build Considerations](https://github.com/hphilpotts/hphilpotts.github.io#build-considerations)       
+- [Learnings](https://github.com/hphilpotts/hphilpotts.github.io#learns-from-this-project)      
+- [Issues](https://github.com/hphilpotts/hphilpotts.github.io#current-issues--bugs)       
+- [Future improvements](https://github.com/hphilpotts/hphilpotts.github.io#future-improvements--additions--features-to-implement)        
+
 ## Description:     
 
 This is version 2 of my portfolio site: a complete rebuild from the ground up, with only content from _v1_ reused for _v2_.     
