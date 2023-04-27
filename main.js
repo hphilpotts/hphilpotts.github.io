@@ -45,8 +45,6 @@ const mainContainer = document.getElementById('main-container')
 const checkCurrentScrollPosition = () => {
     const currentScrollPointTop = Math.floor(mainContainer.scrollTop / 100)
 
-    console.log(currentScrollPointTop, aboutLinks.roundedTargetTop);
-
     switch (currentScrollPointTop) {
         case helloLinks.roundedTargetTop:
             $(helloLinks.links.filter(Boolean)).addClass('highlighted')
