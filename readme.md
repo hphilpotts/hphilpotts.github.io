@@ -8,6 +8,8 @@
 - [Issues](https://github.com/hphilpotts/hphilpotts.github.io#current-issues--bugs)       
 - [Future improvements](https://github.com/hphilpotts/hphilpotts.github.io#future-improvements--additions--features-to-implement)        
 
+![Screenshot of the site on mobile](/img/screenshot27Apr.png)       
+
 ## Description:     
 
 This is version 2 of my portfolio site: a complete rebuild from the ground up, with only content from _v1_ reused for _v2_.     
